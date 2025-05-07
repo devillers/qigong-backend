@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "soins",
+  "info": {
+    "singularName": "soin",
+    "pluralName": "soins",
+    "displayName": "soins"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "caroussel": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
