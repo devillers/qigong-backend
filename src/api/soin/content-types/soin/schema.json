@@ -4,7 +4,8 @@
   "info": {
     "singularName": "soin",
     "pluralName": "soins",
-    "displayName": "soins"
+    "displayName": "soins",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,24 +18,29 @@
       "type": "blocks"
     },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "caroussel": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "categorie": {
+      "type": "string"
     }
   }
 }

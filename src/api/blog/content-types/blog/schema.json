@@ -16,9 +16,6 @@
     }
   },
   "attributes": {
-    "description": {
-      "type": "text"
-    },
     "photo": {
       "type": "media",
       "multiple": false,
@@ -43,6 +40,12 @@
     },
     "titre": {
       "type": "string"
+    },
+    "categorie": {
+      "type": "string"
+    },
+    "contenu": {
+      "type": "blocks"
     }
   }
 }

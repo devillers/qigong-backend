@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "apropos",
+  "info": {
+    "singularName": "a-propos",
+    "pluralName": "apropos",
+    "displayName": "A propos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Titre": {
+      "type": "string"
+    },
+    "Contenu": {
+      "type": "blocks"
+    }
+  }
+}

@@ -369,6 +369,64 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAProposAPropos extends Struct.SingleTypeSchema {
+  collectionName: 'apropos';
+  info: {
+    displayName: 'A propos';
+    pluralName: 'apropos';
+    singularName: 'a-propos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Contenu: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::a-propos.a-propos'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Titre: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiAccueilAccueil extends Struct.SingleTypeSchema {
+  collectionName: 'accueils';
+  info: {
+    displayName: 'Accueil';
+    pluralName: 'accueils';
+    singularName: 'accueil';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contenu: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::accueil.accueil'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titre: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
   collectionName: 'blogs';
   info: {
@@ -390,10 +448,11 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    categorie: Schema.Attribute.String;
+    contenu: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'>;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
@@ -408,6 +467,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
 export interface ApiSoinSoin extends Struct.CollectionTypeSchema {
   collectionName: 'soins';
   info: {
+    description: '';
     displayName: 'soins';
     pluralName: 'soins';
     singularName: 'soin';
@@ -420,6 +480,7 @@ export interface ApiSoinSoin extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    categorie: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -920,6 +981,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::a-propos.a-propos': ApiAProposAPropos;
+      'api::accueil.accueil': ApiAccueilAccueil;
       'api::blog.blog': ApiBlogBlog;
       'api::soin.soin': ApiSoinSoin;
       'plugin::content-releases.release': PluginContentReleasesRelease;
