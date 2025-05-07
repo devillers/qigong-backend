@@ -489,6 +489,7 @@ export interface ApiSoinSoin extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::soin.soin'> &
       Schema.Attribute.Private;
     photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    prix: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     titre: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

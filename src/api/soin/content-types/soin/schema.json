@@ -41,6 +41,9 @@
     },
     "categorie": {
       "type": "string"
+    },
+    "prix": {
+      "type": "integer"
     }
   }
 }
