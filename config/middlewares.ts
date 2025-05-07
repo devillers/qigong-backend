@@ -6,21 +6,27 @@ export default ({ env }) => [
     name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
-        useDefaults: true, // keep the rest of the defaults
+        useDefaults: true,
         directives: {
           'img-src': [
             "'self'",
             'data:',
             'blob:',
             'https://market-assets.strapi.io',
-            'https://res.cloudinary.com',  // ← allow Cloudinary images
+            'https://res.cloudinary.com',
           ],
-          // you can override other directives here if needed
+          // keep other defaults (script-src, style-src, etc.)
         },
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: env('CORS_ORIGINS', '*').split(','),  
+      credentials: true,
+    },
+  },
   'strapi::poweredBy',
   'strapi::logger',
   'strapi::query',
