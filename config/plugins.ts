@@ -1,5 +1,5 @@
 // ./config/plugins.ts
-
+console.log('👉 Loading Cloudinary upload plugin…');
 export default ({ env }) => ({
     upload: {
       config: {
