@@ -497,6 +497,37 @@ export interface ApiSoinSoin extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiUtilisateurUtilisateur extends Struct.CollectionTypeSchema {
+  collectionName: 'utilisateurs';
+  info: {
+    displayName: 'Utilisateurs';
+    pluralName: 'utilisateurs';
+    singularName: 'utilisateur';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::utilisateur.utilisateur'
+    > &
+      Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    Prenom: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    Telephone: Schema.Attribute.BigInteger;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -944,6 +975,7 @@ export interface PluginUsersPermissionsUser
   extends Struct.CollectionTypeSchema {
   collectionName: 'users-permissions_user';
   info: {
+    description: '';
     displayName: 'User';
     pluralName: 'users';
     singularName: 'user';
@@ -952,18 +984,18 @@ export interface PluginUsersPermissionsUser
     draftAndPublish: false;
   };
   attributes: {
-    bio: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    firstName: Schema.Attribute.String;
-    lastName: Schema.Attribute.String;
+    Email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    Nom: Schema.Attribute.String;
+    Prenom: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -985,6 +1017,7 @@ declare module '@strapi/strapi' {
       'api::accueil.accueil': ApiAccueilAccueil;
       'api::blog.blog': ApiBlogBlog;
       'api::soin.soin': ApiSoinSoin;
+      'api::utilisateur.utilisateur': ApiUtilisateurUtilisateur;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
