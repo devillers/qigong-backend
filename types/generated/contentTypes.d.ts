@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAProposAPropos extends Struct.SingleTypeSchema {
   collectionName: 'apropos';
   info: {
+    description: '';
     displayName: 'A propos';
     pluralName: 'apropos';
     singularName: 'a-propos';
@@ -390,6 +391,7 @@ export interface ApiAProposAPropos extends Struct.SingleTypeSchema {
       'api::a-propos.a-propos'
     > &
       Schema.Attribute.Private;
+    photo: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     Titre: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
